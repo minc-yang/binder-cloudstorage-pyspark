@@ -14,7 +14,7 @@ USER root
 # Spark dependencies
 # Default values can be overridden at build time
 # (ARGS are in lower case to distinguish them from ENV)
-ARG spark_version="3.1.2"
+ARG spark_version="3.2.1"
 ARG hadoop_version="3.2"
 ARG spark_checksum="2385CB772F21B014CE2ABD6B8F5E815721580D6E8BC42A26D70BBCDDA8D303D886A6F12B36D40F6971B5547B70FAE62B5A96146F0421CB93D4E51491308EF5D5"
 ARG openjdk_version="11"
@@ -37,6 +37,8 @@ RUN wget -q "https://archive.apache.org/dist/spark/spark-${APACHE_SPARK_VERSION}
 
 WORKDIR /usr/local
 
+ARG shared_workspace=/opt/workspace
+
 # Configure Spark
 ENV SPARK_HOME=/usr/local/spark
 ENV SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info" \
@@ -55,7 +57,44 @@ RUN cp -p "${SPARK_HOME}/conf/spark-defaults.conf.template" "${SPARK_HOME}/conf/
 
 USER ${NB_UID}
 
-COPY ./PySpark-Demo.ipynb ${HOME}
+# install pyspark
+RUN apt-get update -y && pip install wget==3.2 pyspark==${spark_version} 
+
+
+# -- Layer: Stocator and COS SDK
+# update spark stocator
+COPY ./jars/jar_files/*.jar /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/jars/
+COPY ./jars/core-site.xml /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/conf/
+
+COPY ./workspace/notebooks ${HOME}/workspace/notebooks
+COPY ./workspace/data ${HOME}/workspace/data
+
+# jupyter lab extensions
+RUN pip install jupyterlab-drawio
+RUN pip install jupyterlab-git
+
+# IBM Cloud
+RUN pip install ibmos2spark
+RUN pip install ibm-cos-sdk
+
+# s3 browser
+RUN pip install jupyterlab-s3-browser
+# enable extensions
+RUN jupyter serverextension enable --py jupyterlab_s3_browser
+RUN jupyter labextension install jupyterlab-spreadsheet
+
+# test data generator
+RUN pip install Faker
+
+# additional python libraries
+RUN pip install \
+    'beautifulsoup4==4.9.*' \
+    'pandas \
+    'seaborn \
+    'matlibplot \
+    'statsmodels==0.12.*' \
+    'widgetsnbextension==3.5.*'\    
+    'xlrd==2.0.*'
 
 # Install pyarrow
 RUN mamba install --quiet --yes \
@@ -64,4 +103,4 @@ RUN mamba install --quiet --yes \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
-WORKDIR "${HOME}"
+WORKDIR "${HOME}/workspace"
