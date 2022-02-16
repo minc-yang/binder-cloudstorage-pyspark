@@ -70,26 +70,24 @@ RUN pip install wget==3.2 pyspark==${spark_version}
 
 # jupyter lab extensions
 RUN pip install jupyterlab-drawio
-RUN pip install jupyterlab-git
+# disable these to reduce docker size
+#RUN pip install jupyterlab-git
+#RUN pip install Faker
+# additional python libraries
+# RUN pip install beautifulsoup4 
+# RUN pip install seaborn 
 
 # -- Layer: Stocator and COS SDK
 # IBM Cloud
 RUN pip install ibmos2spark
 RUN pip install ibm-cos-sdk
+RUN pip install matplotlib
 
 # s3 browser
 RUN pip install jupyterlab-s3-browser
 # enable extensions
 RUN jupyter serverextension enable --py jupyterlab_s3_browser
-#RUN jupyter labextension install jupyterlab-spreadsheet
-
-# test data generator
-RUN pip install Faker
-
-# additional python libraries
-RUN pip install beautifulsoup4 
-RUN pip install seaborn 
-RUN pip install matplotlib
+RUN jupyter labextension install jupyterlab-spreadsheet
 
 # Install pyarrow
 RUN mamba install --quiet --yes \
