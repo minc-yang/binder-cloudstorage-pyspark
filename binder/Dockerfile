@@ -54,6 +54,13 @@ RUN cp -p "${SPARK_HOME}/conf/spark-defaults.conf.template" "${SPARK_HOME}/conf/
     echo 'spark.driver.extraJavaOptions -Dio.netty.tryReflectionSetAccessible=true' >> "${SPARK_HOME}/conf/spark-defaults.conf" && \
     echo 'spark.executor.extraJavaOptions -Dio.netty.tryReflectionSetAccessible=true' >> "${SPARK_HOME}/conf/spark-defaults.conf"
 
+# update spark stocator
+ADD binder/jars/stocator-1.1.4.jar /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/jars/
+ADD binder/jars/core-site.xml /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/conf/
+
+ADD binder/workspace/notebooks ${HOME}/workspace
+ADD binder/workspace/data ${HOME}/workspace/data
+
 USER ${NB_UID}
 
 # install pyspark
@@ -90,11 +97,4 @@ RUN mamba install --quiet --yes \
     fix-permissions "/home/${NB_USER}"
 
 WORKDIR "${HOME}/workspace"
-
-# update spark stocator
-ADD binder/jars/stocator-1.1.4.jar /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/jars/
-ADD binder/jars/core-site.xml /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/conf/
-
-ADD binder/workspace/notebooks ${HOME}/workspace
-ADD binder/workspace/data ${HOME}/workspace/data
 
