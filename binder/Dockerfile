@@ -98,9 +98,9 @@ RUN mamba install --quiet --yes \
 WORKDIR "${HOME}/workspace"
 
 # update spark stocator
-ADD jars/stocator-1.1.4.jar /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/jars/
-ADD jars/core-site.xml /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/conf/
+ADD binder/jars/stocator-1.1.4.jar /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/jars/
+ADD binder/jars/core-site.xml /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/conf/
 
-ADD workspace/notebooks ${HOME}/workspace/notebooks
-ADD workspace/data ${HOME}/workspace/data
+ADD binder/workspace/notebooks ${HOME}/workspace/notebooks
+ADD binder/workspace/data ${HOME}/workspace/data
 
