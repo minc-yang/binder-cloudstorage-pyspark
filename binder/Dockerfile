@@ -55,7 +55,7 @@ RUN cp -p "${SPARK_HOME}/conf/spark-defaults.conf.template" "${SPARK_HOME}/conf/
     echo 'spark.executor.extraJavaOptions -Dio.netty.tryReflectionSetAccessible=true' >> "${SPARK_HOME}/conf/spark-defaults.conf"
 
 # update spark stocator
-ADD binder/jars/stocator-1.1.4.jar /usr/local/spark-${spark_version}-bin-hadoop${hadoop_version}/jars/
+ADD binder/jars /usr/local/spark-${spark_version}-bin-hadoop${hadoop_version}/jars
 ADD binder/jars/core-site.xml /usr/local/spark-${spark_version}-bin-hadoop${hadoop_version}/conf/
 
 ADD binder/workspace/notebooks ${HOME}/workspace
