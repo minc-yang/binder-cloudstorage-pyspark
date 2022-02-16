@@ -8,7 +8,7 @@ IBM Cloud Storage Notebooks:
 
 https://mybinder.org/v2/gh/minc-yang/binder-cloudstorage-pyspark/HEAD
 
-Note: launching notebooks in binder may take few minutes long. 
+Note: _launching notebooks in binder may take few minutes long. _
 
 > Working_with_IBM_COS in Python.ipynb
 >
