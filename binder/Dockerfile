@@ -63,11 +63,11 @@ RUN pip install wget==3.2 pyspark==${spark_version}
 # -- Layer: Stocator and COS SDK
 RUN pwd
 # update spark stocator
-COPY ../jars/stocator-1.1.4.jar /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/jars/
-COPY ../jars/core-site.xml /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/conf/
+COPY jars/stocator-1.1.4.jar /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/jars/
+COPY jars/core-site.xml /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/conf/
 
-COPY ../workspace/notebooks ${HOME}/workspace/notebooks
-COPY ../workspace/data ${HOME}/workspace/data
+COPY workspace/notebooks ${HOME}/workspace/notebooks
+COPY workspace/data ${HOME}/workspace/data
 
 # jupyter lab extensions
 RUN pip install jupyterlab-drawio
