@@ -17,7 +17,4 @@ PySpark Basics Notebooks
 
 Use repo2docker built image container.
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/minc-yang/binder-cloudstorage-pyspark/HEAD)
-
-.. image:: https://mybinder.org/badge_logo.svg
- :target: https://mybinder.org/v2/gh/minc-yang/binder-cloudstorage-pyspark/HEAD
  
