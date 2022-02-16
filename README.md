@@ -7,6 +7,7 @@ __Run Apache Pyspark 3.2.1 on Binder / JDK 11__
 IBM Cloud Storage Notebooks:
 
 https://mybinder.org/v2/gh/minc-yang/binder-cloudstorage-pyspark/HEAD
+Note: launching notebooks in binder may take few minutes long. 
 
 > Working_with_IBM_COS in Python.ipynb
 >
@@ -17,7 +18,6 @@ PySpark Basics Notebooks
 > - Pyspark_Intro.ipynb
 > - PySpark_Basics.ipynb
 > - Spark_Exercises.ipynb
-
 
 
 Additional extensions enabled including:
