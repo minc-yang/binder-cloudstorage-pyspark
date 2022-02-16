@@ -47,6 +47,7 @@ RUN ln -s "spark-${APACHE_SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}" spark && \
     mkdir -p /usr/local/bin/before-notebook.d && \
     ln -s "${SPARK_HOME}/sbin/spark-config.sh" /usr/local/bin/before-notebook.d/spark-config.sh
 
+
 # Fix Spark installation for Java 11 and Apache Arrow library
 # see: https://github.com/apache/spark/pull/27356, https://spark.apache.org/docs/latest/#downloading
 RUN cp -p "${SPARK_HOME}/conf/spark-defaults.conf.template" "${SPARK_HOME}/conf/spark-defaults.conf" && \
@@ -55,18 +56,17 @@ RUN cp -p "${SPARK_HOME}/conf/spark-defaults.conf.template" "${SPARK_HOME}/conf/
 
 USER ${NB_UID}
 
+# -- Layer: Stocator and COS SDK
+# update spark stocator
+ADD ./jars/stocator-1.1.4.jar /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/jars/
+ADD ./jars/core-site.xml /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/conf/
+
+ADD ./workspace/notebooks ${HOME}/workspace/notebooks
+ADD ./workspace/data ${HOME}/workspace/data
+
+
 # install pyspark
 RUN pip install wget==3.2 pyspark==${spark_version} 
-
-# -- Layer: Stocator and COS SDK
-WORKDIR ${HOME}/workspace
-
-# update spark stocator
-COPY ./jars/stocator-1.1.4.jar /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/jars/
-COPY ./jars/core-site.xml /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/conf/
-
-COPY ./workspace/notebooks ${HOME}/workspace/notebooks
-COPY ./workspace/data ${HOME}/workspace/data
 
 # jupyter lab extensions
 RUN pip install jupyterlab-drawio
