@@ -1,4 +1,4 @@
-# binder Cloud-storage - pyspark Notebook
+# PySpark Cloud-Storage Notebooks on binder
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/minc-yang/binder-cloudstorage-pyspark/HEAD)
 
@@ -16,7 +16,10 @@ PySpark Basics Notebooks
 > - PySpark_Basics.ipynb
 > - Spark_Exercises.ipynb
 
-with S3 Object Storage Browser
 
-Note:
-use repo2docker built image container
+
+Additional extensions enabled including:
+
+- S3 Object Storage Browser
+- Drawio. diagrams
+- CSV file viewer

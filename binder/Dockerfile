@@ -54,6 +54,8 @@ RUN cp -p "${SPARK_HOME}/conf/spark-defaults.conf.template" "${SPARK_HOME}/conf/
     echo 'spark.driver.extraJavaOptions -Dio.netty.tryReflectionSetAccessible=true' >> "${SPARK_HOME}/conf/spark-defaults.conf" && \
     echo 'spark.executor.extraJavaOptions -Dio.netty.tryReflectionSetAccessible=true' >> "${SPARK_HOME}/conf/spark-defaults.conf"
 
+USER ${NB_UID}
+
 # update spark stocator
 ADD binder/jars/stocator-1.1.4.jar /usr/local/spark-${spark_version}-bin-hadoop${hadoop_version}/jars/
 ADD binder/jars/aws /usr/local/spark-${spark_version}-bin-hadoop${hadoop_version}/jars/
@@ -62,8 +64,6 @@ ADD binder/jars/core-site.xml /usr/local/spark-${spark_version}-bin-hadoop${hado
 
 ADD binder/workspace/notebooks ${HOME}/workspace
 ADD binder/workspace/data ${HOME}/workspace/data
-
-USER ${NB_UID}
 
 # install pyspark
 RUN pip install wget==3.2 pyspark==${spark_version} 
