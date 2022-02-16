@@ -1,0 +1,16 @@
+#Download Apache Spark 3.x
+wget https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz
+
+tar -xzf spark-3.2.1-bin-hadoop3.2.tgz
+
+# clean up
+rm spark-3.2.1-bin-hadoop3.2.tgz
+
+# set home
+SPARK_HOME=$HOME/spark-3.2.1-bin-hadoop3.2
+
+# install scala kernel
+jupyter toree install --user --spark_home=$SPARK_HOME
+
+#Jupyter server proxy
+jupyter serverextension enable --sys-prefix jupyter_server_proxy

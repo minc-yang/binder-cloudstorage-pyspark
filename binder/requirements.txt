@@ -1,0 +1,3 @@
+pyspark==3.2.1
+toree
+jupyter-server-proxy
