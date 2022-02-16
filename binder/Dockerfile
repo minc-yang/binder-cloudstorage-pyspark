@@ -58,8 +58,7 @@ RUN cp -p "${SPARK_HOME}/conf/spark-defaults.conf.template" "${SPARK_HOME}/conf/
 USER ${NB_UID}
 
 # install pyspark
-RUN apt-get update -y && pip install wget==3.2 pyspark==${spark_version} 
-
+RUN pip install wget==3.2 pyspark==${spark_version} 
 
 # -- Layer: Stocator and COS SDK
 # update spark stocator
