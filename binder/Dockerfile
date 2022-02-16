@@ -80,7 +80,7 @@ RUN pip install Faker
 # additional python libraries
 RUN pip install beautifulsoup4 
 RUN pip install seaborn 
-RUN pip install matlibplot
+RUN pip install matplotlib
 
 # Install pyarrow
 RUN mamba install --quiet --yes \
