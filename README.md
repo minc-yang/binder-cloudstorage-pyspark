@@ -15,6 +15,8 @@ PySpark Basics Notebooks
 > - PySpark_Basics.ipynb
 > - Spark_Exercises.ipynb
 
+with S3 Object Storage Browser
 
-Use repo2docker built image container.
+Note:
+use repo2docker built image container
  
