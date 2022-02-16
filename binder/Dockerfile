@@ -58,11 +58,11 @@ USER ${NB_UID}
 
 # -- Layer: Stocator and COS SDK
 # update spark stocator
-ADD ./jars/stocator-1.1.4.jar /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/jars/
-ADD ./jars/core-site.xml /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/conf/
+ADD jars/stocator-1.1.4.jar /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/jars/
+ADD jars/core-site.xml /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/conf/
 
-ADD ./workspace/notebooks ${HOME}/workspace/notebooks
-ADD ./workspace/data ${HOME}/workspace/data
+ADD workspace/notebooks ${HOME}/workspace/notebooks
+ADD workspace/data ${HOME}/workspace/data
 
 
 # install pyspark
