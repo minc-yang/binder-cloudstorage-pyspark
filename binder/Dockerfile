@@ -96,5 +96,5 @@ RUN mamba install --quiet --yes \
 WORKDIR "${HOME}"
 
 # copy notebooks and data
-ADD binder/workspace/notebooks ${HOME}/notebook
-ADD binder/workspace/data ${HOME}/notebook/data
+ADD binder/workspace/notebooks ${HOME}/
+ADD binder/workspace/data ${HOME}/data
