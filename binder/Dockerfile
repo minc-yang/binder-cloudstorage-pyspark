@@ -73,20 +73,20 @@ RUN pip install ibm-cos-sdk
 RUN pip install jupyterlab-s3-browser
 # enable extensions
 RUN jupyter serverextension enable --py jupyterlab_s3_browser
-RUN jupyter labextension install jupyterlab-spreadsheet
+#RUN jupyter labextension install jupyterlab-spreadsheet
 
 # test data generator
 RUN pip install Faker
 
 # additional python libraries
-RUN pip install \
-    'beautifulsoup4==4.9.*' \
-    'pandas \
-    'seaborn \
-    'matlibplot \
-    'statsmodels==0.12.*' \
-    'widgetsnbextension==3.5.*'\    
-    'xlrd==2.0.*'
+# RUN pip install \
+#     'beautifulsoup4==4.9.*' \
+#     'pandas \
+#     'seaborn \
+#     'matlibplot \
+#     'statsmodels==0.12.*' \
+#     'widgetsnbextension==3.5.*'\    
+#     'xlrd==2.0.*'
 
 # Install pyarrow
 RUN mamba install --quiet --yes \
