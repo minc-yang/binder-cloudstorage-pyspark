@@ -93,8 +93,8 @@ RUN mamba install --quiet --yes \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
-WORKDIR "${HOME}/workspace"
+WORKDIR "${HOME}"
 
 # copy notebooks and data
-ADD binder/workspace/notebooks ${HOME}/workspace
-ADD binder/workspace/data ${HOME}/workspace/data
+ADD binder/workspace/notebooks ${HOME}/notebook
+ADD binder/workspace/data ${HOME}/notebook/data
