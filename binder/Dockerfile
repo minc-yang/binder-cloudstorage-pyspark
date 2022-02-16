@@ -56,8 +56,6 @@ RUN cp -p "${SPARK_HOME}/conf/spark-defaults.conf.template" "${SPARK_HOME}/conf/
 
 USER ${NB_UID}
 
-# -- Layer: Stocator and COS SDK
-
 # install pyspark
 RUN pip install wget==3.2 pyspark==${spark_version} 
 
@@ -65,6 +63,7 @@ RUN pip install wget==3.2 pyspark==${spark_version}
 RUN pip install jupyterlab-drawio
 RUN pip install jupyterlab-git
 
+# -- Layer: Stocator and COS SDK
 # IBM Cloud
 RUN pip install ibmos2spark
 RUN pip install ibm-cos-sdk
@@ -79,14 +78,13 @@ RUN jupyter serverextension enable --py jupyterlab_s3_browser
 RUN pip install Faker
 
 # additional python libraries
-# RUN pip install \
-#     'beautifulsoup4==4.9.*' \
-#     'pandas \
-#     'seaborn \
-#     'matlibplot \
-#     'statsmodels==0.12.*' \
-#     'widgetsnbextension==3.5.*'\    
-#     'xlrd==2.0.*'
+RUN pip install 'beautifulsoup4==4.9.*' \
+    'pandas' \
+    'seaborn' \
+    'matlibplot' \
+    'statsmodels==0.12.*' \
+    'widgetsnbextension==3.5.*'\    
+    'xlrd==2.0.*'
 
 # Install pyarrow
 RUN mamba install --quiet --yes \
@@ -101,6 +99,6 @@ WORKDIR "${HOME}/workspace"
 ADD binder/jars/stocator-1.1.4.jar /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/jars/
 ADD binder/jars/core-site.xml /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/conf/
 
-ADD binder/workspace/notebooks ${HOME}/workspace/notebooks
+ADD binder/workspace/notebooks ${HOME}/workspace
 ADD binder/workspace/data ${HOME}/workspace/data
 
