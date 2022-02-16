@@ -1,7 +1,7 @@
 # binder cloud-storage - pyspark Notebook
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/minc-yang/binder-cloudstorage-pyspark/HEAD)
 
-Running Apache Pyspark 3.2.1 on Binder
+Run Apache Pyspark 3.2.1 on Binder / JDK 11
 
 IBM Cloud Storage Notebooks:
 
