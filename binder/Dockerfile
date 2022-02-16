@@ -37,8 +37,6 @@ RUN wget -q "https://archive.apache.org/dist/spark/spark-${APACHE_SPARK_VERSION}
 
 WORKDIR /usr/local
 
-ARG shared_workspace=/opt/workspace
-
 # Configure Spark
 ENV SPARK_HOME=/usr/local/spark
 ENV SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info" \
@@ -61,8 +59,8 @@ USER ${NB_UID}
 RUN pip install wget==3.2 pyspark==${spark_version} 
 
 # -- Layer: Stocator and COS SDK
+WORKDIR ${HOME}/workspace
 
-WORKDIR "${HOME}"
 # update spark stocator
 COPY ./jars/stocator-1.1.4.jar /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/jars/
 COPY ./jars/core-site.xml /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/conf/
