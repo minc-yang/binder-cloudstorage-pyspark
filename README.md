@@ -1,4 +1,5 @@
 # binder cloud-storage - pyspark Notebook
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/minc-yang/binder-cloudstorage-pyspark/HEAD)
 
 Running Apache Pyspark 3.2.1 on Binder
 
@@ -16,5 +17,4 @@ PySpark Basics Notebooks
 
 
 Use repo2docker built image container.
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/minc-yang/binder-cloudstorage-pyspark/HEAD)
  
