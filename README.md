@@ -1,4 +1,4 @@
-# Working with Cloud-Storage - PySpark Notebooks on binder
+# Working with Cloud-Storage - PySpark Notebooks
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/minc-yang/binder-cloudstorage-pyspark/HEAD)
 
