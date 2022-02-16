@@ -39,7 +39,7 @@ WORKDIR /usr/local
 
 # Configure Spark
 ENV SPARK_HOME=/usr/local/spark
-ENV SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=info" \
+ENV SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx2048M --driver-java-options=-Dlog4j.logLevel=info" \
     PATH="${PATH}:${SPARK_HOME}/bin"
 
 RUN ln -s "spark-${APACHE_SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}" spark && \
@@ -54,6 +54,8 @@ RUN cp -p "${SPARK_HOME}/conf/spark-defaults.conf.template" "${SPARK_HOME}/conf/
     echo 'spark.executor.extraJavaOptions -Dio.netty.tryReflectionSetAccessible=true' >> "${SPARK_HOME}/conf/spark-defaults.conf"
 
 USER ${NB_UID}
+
+COPY ./PySpark-Demo.ipynb ${HOME}
 
 # Install pyarrow
 RUN mamba install --quiet --yes \
