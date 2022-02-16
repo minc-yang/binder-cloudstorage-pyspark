@@ -78,13 +78,13 @@ RUN jupyter serverextension enable --py jupyterlab_s3_browser
 RUN pip install Faker
 
 # additional python libraries
-RUN pip install 'beautifulsoup4==4.9.*' \
+RUN pip install 'beautifulsoup4' \
     'pandas' \
     'seaborn' \
     'matlibplot' \
-    'statsmodels==0.12.*' \
-    'widgetsnbextension==3.5.*'\    
-    'xlrd==2.0.*'
+    'statsmodels' \
+    'widgetsnbextension'\    
+    'xlrd'
 
 # Install pyarrow
 RUN mamba install --quiet --yes \
