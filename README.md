@@ -1,12 +1,12 @@
 # Working with Cloud-Storage - PySpark Notebooks
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/minc-yang/binder-cloudstorage-pyspark/HEAD)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/minc-yang/binder-pyspark-cloudstorage/HEAD)
 
 __Run Apache Pyspark 3.2.1 on Binder / JDK 11__
 
 IBM Cloud Storage Notebooks:
 
-https://mybinder.org/v2/gh/minc-yang/binder-cloudstorage-pyspark/HEAD
+https://mybinder.org/v2/gh/minc-yang/binder-pyspark-cloudstorage/HEAD
 
 Note: _launching notebooks in binder may take few minutes long. _
 
